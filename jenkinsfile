@@ -22,23 +22,23 @@ pipeline {
             }
         }
 
-        stage('Dependencies') {
-            steps {
-                sh 'flutter pub get'
-            }
-        }
+        // stage('Dependencies') {
+        //     steps {
+        //         sh 'flutter pub get'
+        //     }
+        // }
 
-        stage('Build Android') {
-            steps {
-                sh 'flutter build apk --release'
-            }
+        // stage('Build Android') {
+        //     steps {
+        //         sh 'flutter build apk --release'
+        //     }
 
-            post {
-                success {
-                    archiveArtifacts artifacts: 'build/app/outputs/flutter-apk/app-release.apk', fingerprint: true
-                }
-            }
-        }
+        //     post {
+        //         success {
+        //             archiveArtifacts artifacts: 'build/app/outputs/flutter-apk/app-release.apk', fingerprint: true
+        //         }
+        //     }
+        // }
 
         // stage('Build iOS') {
         //     steps {
