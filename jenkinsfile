@@ -66,5 +66,5 @@ pipeline {
 }
 
 def cleanUp() {
-    sh 'flutter clean'
+    // sh 'flutter clean'
 }
