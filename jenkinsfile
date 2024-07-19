@@ -1,0 +1,67 @@
+pipeline {
+    agent any
+
+    // environment {
+    //     // Define paths to your Flutter and Android SDK installations
+    //     FLUTTER_HOME = '/path/to/flutter'
+    //     ANDROID_HOME = '/path/to/android-sdk'
+    //     PATH = "$FLUTTER_HOME/bin:$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
+    // }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Setup Flutter') {
+            steps {
+                sh 'flutter --version'
+                sh 'flutter doctor'
+            }
+        }
+
+        stage('Dependencies') {
+            steps {
+                sh 'flutter pub get'
+            }
+        }
+
+        stage('Build Android') {
+            steps {
+                sh 'flutter build apk --release'
+            }
+
+            post {
+                success {
+                    archiveArtifacts artifacts: 'build/app/outputs/flutter-apk/app-release.apk', fingerprint: true
+                }
+            }
+        }
+
+        // stage('Build iOS') {
+        //     steps {
+        //         sh 'flutter build ios --release --no-codesign'
+        //     }
+
+        //     post {
+        //         success {
+        //             archiveArtifacts artifacts: 'build/ios/iphoneos/Runner.app', fingerprint: true
+        //         }
+        //     }
+        // }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+        success {
+            echo 'Build successful!'
+        }
+        failure {
+            echo 'Build failed!'
+        }
+    }
+}
