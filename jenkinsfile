@@ -14,7 +14,6 @@ pipeline {
                 git 'https://github.com/lucas-castro-icts/android_jenkins.git'
             }
         }
-
         // stage('Setup Flutter') {
         //     steps {
         //         sh 'flutter --version'
