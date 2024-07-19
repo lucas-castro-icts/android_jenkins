@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                git "https://github.com/lucas-castro-icts/android_jenkins.git"
             }
         }
 
