@@ -1,12 +1,12 @@
 pipeline {
     agent any
 
-    // environment {
-    //     // Define paths to your Flutter and Android SDK installations
-    //     FLUTTER_HOME = '/path/to/flutter'
-    //     ANDROID_HOME = '/path/to/android-sdk'
-    //     PATH = "$FLUTTER_HOME/bin:$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
-    // }
+    environment {
+        // Define paths to your Flutter and Android SDK installations
+        FLUTTER_HOME = '/path/to/flutter'
+        ANDROID_HOME = '/path/to/android-sdk'
+        PATH = "$FLUTTER_HOME/bin:$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
+    }
 
     stages {
         stage('Checkout') {
@@ -55,7 +55,7 @@ pipeline {
 
     post {
         always {
-            cleanWs()
+            cleanUp()
         }
         success {
             echo 'Build successful!'
@@ -64,4 +64,8 @@ pipeline {
             echo 'Build failed!'
         }
     }
+}
+
+def cleanUp() {
+    sh 'flutter clean'
 }
