@@ -9,18 +9,18 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
+        stage('Clone repository') {
             steps {
-                git "https://github.com/lucas-castro-icts/android_jenkins.git"
+                git 'https://github.com/lucas-castro-icts/android_jenkins.git'
             }
         }
 
-        stage('Setup Flutter') {
-            steps {
-                sh 'flutter --version'
-                sh 'flutter doctor'
-            }
-        }
+        // stage('Setup Flutter') {
+        //     steps {
+        //         sh 'flutter --version'
+        //         sh 'flutter doctor'
+        //     }
+        // }
 
         // stage('Dependencies') {
         //     steps {
