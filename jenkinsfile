@@ -2,10 +2,9 @@ pipeline {
     agent any
 
     environment {
-        // Define paths to your Flutter and Android SDK installations
-        FLUTTER_HOME = '/path/to/flutter'
-        ANDROID_HOME = '/path/to/android-sdk'
-        PATH = "$FLUTTER_HOME/bin:$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
+        FLUTTER_HOME = 'C:\\Users\\TBS\\fvm\\default'
+        ANDROID_HOME = 'C:\Users\TBS\AppData\Local\Android\Sdk'  // Ajuste o caminho para o Android SDK
+        PATH = "${env.FLUTTER_HOME}\\bin;$PATH;${env.ANDROID_HOME}\\emulator;${env.ANDROID_HOME}\\tools;${env.ANDROID_HOME}\\tools\\bin;${env.ANDROID_HOME}\\platform-tools"
     }
 
     stages {
@@ -14,12 +13,14 @@ pipeline {
                 git 'https://github.com/lucas-castro-icts/android_jenkins.git'
             }
         }
-        // stage('Setup Flutter') {
-        //     steps {
-        //         sh 'flutter --version'
-        //         sh 'flutter doctor'
-        //     }
-        // }
+
+        stage('Setup Flutter') {
+            steps {
+                // Verifica a instalação do Flutter
+                bat 'flutter --version'
+                bat 'flutter doctor'
+            }
+        }
 
         // stage('Dependencies') {
         //     steps {
