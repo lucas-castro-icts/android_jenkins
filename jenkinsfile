@@ -11,7 +11,7 @@ pipeline {
 
         stage('CLEAN') {
             steps {
-                sh 'flutter --version'
+                bat 'flutter --version'
             }
         }
     }
