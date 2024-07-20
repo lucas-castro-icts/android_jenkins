@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone repository') {
             steps {
-                git 'https://github.com/lucas-castro-icts/android_jenkins.git'
+                git 'https://github.com/lucas-castro-icts/android_jenkins'
             }
         }
 
