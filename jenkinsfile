@@ -1,64 +1,25 @@
 pipeline {
     agent any
-
+    environment {
+        flutter = '/Users/TBS/fvm/default/bin/flutter'
+    }
     stages {
-        stage('Clone repository') {
+        stage('GIT PULL') {
             steps {
-                git 'https://github.com/lucas-castro-icts/android_jenkins'
+                git branch: 'master', url: 'https://github.com/lucas-castro-icts/android_jenkins.git'
             }
         }
 
-        stage('Setup Flutter') {
+        stage('CLEAN') {
             steps {
-                // Verifica a instalação do Flutter
-                sh 'flutter --version'
+                sh "${flutter} clean"
             }
         }
 
-        // stage('Dependencies') {
-        //     steps {
-        //         sh 'flutter pub get'
-        //     }
-        // }
-
-        // stage('Build Android') {
-        //     steps {
-        //         sh 'flutter build apk --release'
-        //     }
-
-        //     post {
-        //         success {
-        //             archiveArtifacts artifacts: 'build/app/outputs/flutter-apk/app-release.apk', fingerprint: true
-        //         }
-        //     }
-        // }
-
-        // stage('Build iOS') {
-        //     steps {
-        //         sh 'flutter build ios --release --no-codesign'
-        //     }
-
-        //     post {
-        //         success {
-        //             archiveArtifacts artifacts: 'build/ios/iphoneos/Runner.app', fingerprint: true
-        //         }
-        //     }
-        // }
-    }
-
-    post {
-        always {
-            cleanUp()
-        }
-        success {
-            echo 'Build successful!'
-        }
-        failure {
-            echo 'Build failed!'
+        stage('PUB GET') {
+            steps {
+                sh "${flutter} pub get"
+            }
         }
     }
-}
-
-def cleanUp() {
-    // sh 'flutter clean'
 }
