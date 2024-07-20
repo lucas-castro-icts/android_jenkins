@@ -1,22 +1,24 @@
 pipeline {
     agent any
     environment {
-        PATH = "${env.PATH}:C:/Users/TBS/fvm/default/bin"
+        flutter = "${env.PATH}:C:\\path\\to\\flutter\\bin"
     }
     stages {
-        stage('Checkout') {
+        stage('GIT PULL') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/lucas-castro-icts/android_jenkins.git']]])
+                git branch: 'master', url: 'https://github.com/lucas-castro-icts/android_jenkins.git'
             }
         }
-        stage('Clean') {
+
+        stage('CLEAN') {
             steps {
-                sh 'flutter clean'
+                sh "${flutter} clean"
             }
         }
-        stage('Pub Get') {
+
+        stage('PUB GET') {
             steps {
-                sh 'flutter pub get'
+                sh "${flutter} pub get"
             }
         }
     }
