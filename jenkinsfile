@@ -4,11 +4,11 @@ pipeline {
         flutter = '/Users/TBS/fvm/default/bin/flutter'
     }
     stages {
-        // stage('GIT PULL') {
-        //     steps {
-        //         git branch: 'master', url: 'https://github.com/lucas-castro-icts/android_jenkins.git'
-        //     }
-        // }
+        stage('GIT PULL') {
+            steps {
+                git branch: 'master', url: 'https://github.com/lucas-castro-icts/android_jenkins.git'
+            }
+        }
 
         stage('CLEAN') {
             steps {
