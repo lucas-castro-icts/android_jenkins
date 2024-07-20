@@ -6,7 +6,9 @@ pipeline {
     stages {
         stage('GIT PULL') {
             steps {
-                git branch: 'master', url: 'https://github.com/lucas-castro-icts/android_jenkins.git'
+                git branch: 'master',
+                url: 'https://github.com/lucas-castro-icts/android_jenkins.git',
+                gitTool: 'Default'
             }
         }
 
