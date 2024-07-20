@@ -14,13 +14,13 @@ pipeline {
 
         stage('CLEAN') {
             steps {
-                bat "${flutter} clean"
+                sh "${flutter} clean"
             }
         }
 
         stage('PUB GET') {
             steps {
-                bat "${flutter} pub get"
+                sh "${flutter} pub get"
             }
         }
     }
