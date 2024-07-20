@@ -4,16 +4,28 @@ pipeline {
         PATH = "$PATH:/tmp/workspace/flutter/bin"
     }
     stages {
-        stage('Setup') {
+        stage('Checkout') {
             steps {
-                sh 'echo $PATH'
-                print "${env.PATH}"
+                git 'https://github.com/lucas-castro-icts/android_jenkins.git'
+            }
+        }
+
+        stage('Instalar Flutter') {
+            steps {
+                // Baixar o Flutter
+                sh 'curl https://storage.googleapis.com/flutter_infra/releases/stable/windows/flutter_windows_v1.12.13+hotfix.9-stable.zip -o flutter.zip'
+                // Descompactar o Flutter
+                sh 'unzip flutter.zip'
+                // Adicionar o Flutter ao PATH
+                environment {
+                    PATH = "${env.PATH};${env.WORKSPACE}/flutter/bin"
+                }
             }
         }
 
         stage('Build') {
             steps {
-                sh 'flutter doctor'
+                sh 'flutter doctor -v'
             }
         }
     }
