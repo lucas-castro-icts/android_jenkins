@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        flutter = "${env.PATH}:C:\\path\\to\\flutter\\bin"
+        flutter = "${env.PATH}:C:\\Users\\TBS\\fvm\\default\\bin\\flutter"
     }
     stages {
         stage('GIT PULL') {
