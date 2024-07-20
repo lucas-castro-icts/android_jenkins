@@ -1,26 +1,19 @@
 pipeline {
     agent any
-
     environment {
-        flutter = "/Users/TBS/fvm/default/bin/flutter"
+        PATH = "$PATH:/tmp/workspace/flutter/bin"
     }
-
-
     stages {
-        stage('Flutter Doctor') {
+        stage('Setup') {
             steps {
-                withEnv(['PATH+EXTRA=/opt/flutter/bin']) {
-                    sh '$flutter doctor -v'
-                }
+                print "${env.PATH}"
             }
         }
 
-        stage('GIT PULL') {
+        stage('Build') {
             steps {
-                git branch: 'master',
-                url: 'https://github.com/lucas-castro-icts/android_jenkins.git'
+                sh 'flutter doctor -v'
             }
         }
-
     }
 }
