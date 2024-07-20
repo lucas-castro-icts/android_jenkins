@@ -1,12 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        FLUTTER_HOME = 'C:/Users/TBS/fvm/default'
-        ANDROID_HOME = 'C:/Users/TBS/AppData/Local/Android/Sdk'  // Ajuste o caminho para o Android SDK
-        PATH = "${env.FLUTTER_HOME}/bin;$PATH;${env.ANDROID_HOME}/emulator;${env.ANDROID_HOME}/tools;${env.ANDROID_HOME}/tools/bin;${env.ANDROID_HOME}/platform-tools"
-    }
-
     stages {
         stage('Clone repository') {
             steps {
@@ -17,8 +11,7 @@ pipeline {
         stage('Setup Flutter') {
             steps {
                 // Verifica a instalação do Flutter
-                bat 'flutter --version'
-                bat 'flutter doctor'
+                sh 'flutter --version'
             }
         }
 
