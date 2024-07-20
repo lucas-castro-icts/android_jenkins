@@ -13,7 +13,7 @@ pipeline {
 
         stage('CLEAN') {
             steps {
-                bat "${FLUTTER_HOME}\\flutter clean"
+                bat "${FLUTTER_HOME} clean"
             }
         }
 
