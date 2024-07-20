@@ -1,7 +1,20 @@
 pipeline {
     agent any
 
+    environment {
+        flutter = "/Users/TBS/fvm/default/bin/flutter"
+    }
+
+
     stages {
+        stage('Flutter Doctor') {
+            steps {
+                withEnv(['PATH+EXTRA=/opt/flutter/bin']) {
+                    sh '$flutter doctor -v'
+                }
+            }
+        }
+
         stage('GIT PULL') {
             steps {
                 git branch: 'master',
@@ -9,10 +22,5 @@ pipeline {
             }
         }
 
-        stage('CLEAN') {
-            steps {
-                bat 'flutter --version'
-            }
-        }
     }
 }
