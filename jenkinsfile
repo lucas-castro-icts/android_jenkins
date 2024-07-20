@@ -7,20 +7,19 @@ pipeline {
         stage('GIT PULL') {
             steps {
                 git branch: 'master',
-                url: 'https://github.com/lucas-castro-icts/android_jenkins.git',
-                gitTool: 'Default'
+                url: 'https://github.com/lucas-castro-icts/android_jenkins.git'
             }
         }
 
         stage('CLEAN') {
             steps {
-                sh "${flutter} clean"
+                bat "${flutter} clean"
             }
         }
 
         stage('PUB GET') {
             steps {
-                sh "${flutter} pub get"
+                bat "${flutter} pub get"
             }
         }
     }
