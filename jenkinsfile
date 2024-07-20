@@ -1,8 +1,6 @@
 pipeline {
     agent any
-    environment {
-        FLUTTER_HOME = 'C:\\Users\\TBS\\fvm\\default\\bin\\flutter'
-    }
+
     stages {
         stage('GIT PULL') {
             steps {
@@ -13,13 +11,7 @@ pipeline {
 
         stage('CLEAN') {
             steps {
-                bat "${FLUTTER_HOME} clean"
-            }
-        }
-
-        stage('PUB GET') {
-            steps {
-                bat "${flutter} pub get"
+                sh 'flutter --version'
             }
         }
     }
