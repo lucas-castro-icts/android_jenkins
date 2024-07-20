@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        flutter = 'C:\\Users\\TBS\\fvm\\default\\bin\\flutter'
+        flutter = '/Users/TBS/fvm/default/bin/flutter'
     }
     stages {
         stage('GIT PULL') {
@@ -13,7 +13,7 @@ pipeline {
 
         stage('CLEAN') {
             steps {
-                bat "${flutter} flutter clean"
+                sh "flutter clean"
             }
         }
 
