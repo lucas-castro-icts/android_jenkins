@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        GIT_PATH = 'C:\\Program Files\\Git\\bin'
+        GIT_PATH = 'C:\\Program Files\\Git\\cmd;C:\\Program Files\\Git\\bin;C:\\Program Files\\Git\\bin\\git.exe;'
         FLUTTER_PATH = 'C:\\Users\\TBS\\fvm\\default\\bin'
         SYSTEM_PATH = 'C:\\Windows\\System32'
         PATH = "${GIT_PATH};${FLUTTER_PATH};${SYSTEM_PATH};${env.PATH}"
@@ -20,8 +20,7 @@ pipeline {
                 withEnv(["PATH=${env.PATH}"]) {
                     dir('app') {
                         bat '''
-                            git --version
-                            git config --global --add safe.directory C:\\Users\\TBS\\fvm\\default\\bin\\flutter
+                            git --versions
                             flutter --version
                         '''
                     }
