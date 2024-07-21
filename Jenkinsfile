@@ -3,9 +3,9 @@ pipeline {
 
     environment {
         GIT_PATH = 'C:\\Program Files\\Git\\bin'
-        FLUTTER_PATH = 'C:\\ProgramData\\chocolatey\\bin'
+        FLUTTER_PATH = ';C:\\ProgramData\\chocolatey\\bin'
         SYSTEM_PATH = 'C:\\Windows\\System32'
-        PATH = "${GIT_PATH};${FLUTTER_PATH};${SYSTEM_PATH};${env.PATH}"
+        PATHH = "${GIT_PATH};${FLUTTER_PATH};${SYSTEM_PATH};${env.PATH}"
     }
 
     stages {
@@ -17,7 +17,7 @@ pipeline {
 
         stage('Fetch') {
             steps {
-                withEnv(["PATH=${env.PATH}"]) {
+                withEnv(["PATH=${env.PATHH}"]) {
                     dir('app') {
                         bat '''
                             git --version
