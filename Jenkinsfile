@@ -1,11 +1,11 @@
 pipeline {
     agent any
 
-    // environment {
+    environment {
     //     GIT_PATH = 'C:\\Program Files\\Git\\bin'
-    //     FLUTTER_PATH = 'C:\\Users\\TBS\\fvm\\versions\\stable\\bin'
-    //     PATH = "${GIT_PATH};${FLUTTER_PATH};${env.PATH}"
-    // }
+        FLUTTER_PATH = 'C:\\Users\\TBS\\fvm\\versions\\stable\\bin'
+        PATH = "${FLUTTER_PATH};${env.PATH}"
+    }
 
     stages {
         stage('Checkout') {
@@ -16,21 +16,14 @@ pipeline {
 
         stage('Fetch') {
             steps {
-                // withEnv(["PATH=${env.PATH}"]) {
-                //     dir('app') {
-                //         bat '''
-                //             git --version
-                //             flutter --version
-                //         '''
-                //     }
-                // }
                 withEnv(["PATH=${env.PATH}"]) {
-                    bat '''
-                        git --version
-                        flutter --version
-                    '''
+                    dir('app') {
+                        bat '''
+                            git --version
+                            flutter --version
+                        '''
+                    }
                 }
-
             }
         }
     }
