@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         //     GIT_PATH = 'C:\\Program Files\\Git\\bin'
-        FLUTTER_PATH = 'C:\\Users\\TBS\\fvm\\versions\\stable\\bin'
+        FLUTTER_PATH = 'C:\\Users\\TBS\\fvm\\versions\\3.10.1\\bin'
         PATH = "${FLUTTER_PATH};${env.PATH}"
     }
 
@@ -16,15 +16,28 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                // withEnv(["PATH=${env.PATH}"]) {
-                //     dir('app') {
-                        bat '''
-                            git --version
-                            flutter pub get
-                        '''
-                    // }
-                // }
+                bat '''
+                    flutter pub get
+                '''
             }
+        }
+
+        stage('Build APK') {
+            steps {
+                bat 'flutter build apk --release'
+            }
+        }
+
+        // stage('Archive APK') {
+        //     steps {
+        //         archiveArtifacts artifacts: 'build/app/outputs/flutter-apk/app-release.apk', allowEmptyArchive: true
+        //     }
+        // }
+    }
+
+    post {
+        always {
+            cleanWs()
         }
     }
 }
