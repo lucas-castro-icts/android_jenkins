@@ -16,7 +16,7 @@ pipeline {
         stage('Fetch') {
             steps {
                 dir('app') {
-                    bat label: '', script: '${PATH};${GIT_PATH} git --version'
+                    bat label: '', script: 'C:\\Windows\\System32; C:\\Program Files\\Git\\bin git --version'
                 }
             }
         }
