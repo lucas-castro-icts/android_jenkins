@@ -2,8 +2,10 @@ pipeline {
     agent any
 
     environment {
-        PATH = 'C:\\Windows\\System32'
         GIT_PATH = 'C:\\Program Files\\Git\\bin'
+        FLUTTER_PATH = 'C:\\Users\\TBS\\fvm\\default\\bin'
+        SYSTEM_PATH = 'C:\\Windows\\System32'
+        PATH = "${GIT_PATH};${FLUTTER_PATH};${SYSTEM_PATH};${env.PATH}"
     }
 
     stages {
@@ -15,8 +17,13 @@ pipeline {
 
         stage('Fetch') {
             steps {
-                dir('app') {
-                    bat label: '', script: 'C:\\Windows\\System32; C:\\Program Files\\Git\\bin git --version'
+                withEnv(["PATH=${env.PATH}"]) {
+                    dir('app') {
+                        bat '''
+                            echo %PATH%
+                            flutter --version
+                        '''
+                    }
                 }
             }
         }
