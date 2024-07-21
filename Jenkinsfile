@@ -2,7 +2,9 @@ pipeline {
     agent any
 
     environment {
-        PATH = "$PATH:C:\\Users\\TBS\\fvm\\default\\bin"
+        GIT_PATH = 'C:\\Program Files\\Git\\bin'
+        FLUTTER_PATH = 'C:\\Users\\TBS\\fvm\\default\\bin'
+        PATH = "${env.GIT_PATH};${env.FLUTTER_PATH};${env.PATH}"
     }
 
     stages {
@@ -13,9 +15,11 @@ pipeline {
         }
 
         stage('Fetch') {
-            steps{
-                bat '$PATH; dart pub get'
-            }
+            powershell '''
+                   $env:Path += ";C:\\Program Files\\Git\\bin;C:\\Users\\TBS\\fvm\\default\\bin"
+                flutter doctor -v
+                dart pub get
+            '''
         } 
     }
 }
