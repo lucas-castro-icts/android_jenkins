@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        PATH = 'C:\\Windows\\System32'
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -14,7 +10,10 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'flutter --version'
+                powershell '''
+                    $env:Path += ";C:\\Users\\TBS\\fvm\\default\\bin"
+                    flutter doctor -v
+                '''
             }
         }
     }
