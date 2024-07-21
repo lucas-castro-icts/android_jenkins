@@ -16,15 +16,15 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'flutter --version'
+                bat 'fvm flutter --version'
             }
         }
 
-        stage('Build APK') {
-            steps {
-                bat 'flutter --version'
-            }
-        }
+        // stage('Build APK') {
+        //     steps {
+        //         bat 'flutter --version'
+        //     }
+        // }
 
         // stage('Archive APK') {
         //     steps {
