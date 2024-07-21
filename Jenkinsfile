@@ -24,10 +24,13 @@ pipeline {
                 //         '''
                 //     }
                 // }
-                bat '''
-                    git --version
-                    flutter --version
-                '''
+                withEnv(["PATH=${env.PATH}"]) {
+                    bat '''
+                        git --version
+                        flutter --version
+                    '''
+                }
+
             }
         }
     }
