@@ -21,7 +21,7 @@ pipeline {
                     dir('app') {
                         bat '''
                             git --version
-                            fvm
+                            fvm flutter
                         '''
                     }
                 }
