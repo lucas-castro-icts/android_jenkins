@@ -17,14 +17,19 @@ pipeline {
 
         stage('Fetch') {
             steps {
-                withEnv(["PATH=${env.PATH}"]) {
-                    dir('app') {
-                        bat '''
-                            git --version
-                            fvm flutter
-                        '''
-                    }
-                }
+                // withEnv(["PATH=${env.PATH}"]) {
+                //     dir('app') {
+                //         bat '''
+                //             git --version
+                //             fvm flutter
+                //         '''
+                //     }
+                // }
+                bat '''
+                        echo $PATH  # This will print the current PATH within the script
+                        git --version
+                        fvm flutter
+                    '''
             }
         }
     }
