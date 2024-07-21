@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         PATH = 'C:\\Windows\\System32'
+        GIT_PATH = 'C:\\Program Files\\Git\\bin\\git.exe'
     }
 
     stages {
@@ -15,7 +16,7 @@ pipeline {
         stage('Fetch') {
             steps {
                 dir('app') {
-                    bat label: '', script: 'git --version'
+                    bat label: '', script: '${PATH};${GIT_PATH} git --version'
                 }
             }
         }
