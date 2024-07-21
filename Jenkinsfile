@@ -16,9 +16,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat '''
-                    flutter pub get
-                '''
+                bat 'flutter --version'
             }
         }
 
