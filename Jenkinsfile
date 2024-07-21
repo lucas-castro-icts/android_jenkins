@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        GIT_PATH = 'C:\\Program Files\\Git\\bin;C:\\Program Files\\Git\\cmd'
-        FLUTTER_PATH = 'C:\\ProgramData\\chocolatey\\bin;C:\\Users\\TBS\fvm\\default\\bin\\flutter'
+        GIT_PATH = 'C:\\Program Files\\Git\\bin'
+        FLUTTER_PATH = 'C:\\Users\\TBS\\fvm\\versions\\stable\\bin'
         SYSTEM_PATH = 'C:\\Windows\\System32'
         PATH = "${SYSTEM_PATH};${GIT_PATH};${FLUTTER_PATH};${env.PATH}"
     }
@@ -21,7 +21,7 @@ pipeline {
                     dir('app') {
                         bat '''
                             git --version
-                            fvm flutter
+                            flutter
                         '''
                     }
                 }
