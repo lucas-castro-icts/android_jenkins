@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         PATH = 'C:\\Windows\\System32'
+        FLUTTER_PATH = 'C:\\Users\\TBS\\fvm\\default\\bin'
     }
 
     stages {
