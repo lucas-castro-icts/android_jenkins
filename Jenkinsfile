@@ -13,9 +13,9 @@ pipeline {
         }
 
         stage('Fetch') {
-            dir('app'){
+            dir('app') {
                 bat label: '', script: 'flutter --version'
             }
-        } 
+        }
     }
 }
