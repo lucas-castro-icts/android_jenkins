@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         PATH = 'C:\\Windows\\System32'
-        GIT_PATH = 'C:\\Program Files\\Git\\bin\\git.exe'
+        GIT_PATH = 'C:\\Program Files\\Git\\bin'
     }
 
     stages {
