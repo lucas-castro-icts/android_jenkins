@@ -4,8 +4,7 @@ pipeline {
     environment {
         GIT_PATH = 'C:\\Program Files\\Git\\bin'
         FLUTTER_PATH = 'C:\\Users\\TBS\\fvm\\versions\\stable\\bin'
-        SYSTEM_PATH = 'C:\\Windows\\System32'
-        PATH = "${SYSTEM_PATH};${GIT_PATH};${FLUTTER_PATH};${env.PATH}"
+        PATH = "${GIT_PATH};${FLUTTER_PATH};${env.PATH}"
     }
 
     stages {
@@ -21,7 +20,7 @@ pipeline {
                     dir('app') {
                         bat '''
                             git --version
-                            flutter
+                            flutter --version
                         '''
                     }
                 }
