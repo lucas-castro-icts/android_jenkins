@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        PATH = 'C:\\Windows\\System32'
+    }
+
     stages {
         stage('Checkout') {
             steps {
