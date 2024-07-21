@@ -23,6 +23,7 @@ pipeline {
                         bat '''
                             git --version
                             fvm
+                            flutter
                         '''
                     }
                 }
