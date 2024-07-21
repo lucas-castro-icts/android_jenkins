@@ -2,8 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PATH = 'C:\\Windows\\System32'
-        FLUTTER_PATH = 'C:\\Users\\TBS\\fvm\\default\\bin'
+        PATH = 'C:\\Windows\\System32;C:\\Users\\TBS\\fvm\\default\\bin'
     }
 
     stages {
