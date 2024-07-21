@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-    //     GIT_PATH = 'C:\\Program Files\\Git\\bin'
+        //     GIT_PATH = 'C:\\Program Files\\Git\\bin'
         FLUTTER_PATH = 'C:\\Users\\TBS\\fvm\\versions\\stable\\bin'
         PATH = "${FLUTTER_PATH};${env.PATH}"
     }
@@ -14,16 +14,16 @@ pipeline {
             }
         }
 
-        stage('Fetch') {
+        stage('Install Dependencies') {
             steps {
-                withEnv(["PATH=${env.PATH}"]) {
-                    dir('app') {
+                // withEnv(["PATH=${env.PATH}"]) {
+                //     dir('app') {
                         bat '''
                             git --version
-                            flutter --version
+                            flutter pub get
                         '''
-                    }
-                }
+                    // }
+                // }
             }
         }
     }
