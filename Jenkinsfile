@@ -21,6 +21,7 @@ pipeline {
                     dir('app') {
                         bat '''
                             git --version
+                            git config --global --add safe.directory C:\\Users\\TBS\\fvm\\default\\bin\\flutter
                             flutter --version
                         '''
                     }
