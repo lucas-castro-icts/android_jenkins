@@ -20,8 +20,7 @@ pipeline {
                 withEnv(["PATH=${env.PATH}"]) {
                     dir('app') {
                         bat '''
-                            echo %PATH%
-                            flutter --version
+                            git --version
                         '''
                     }
                 }
