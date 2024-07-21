@@ -3,7 +3,8 @@ pipeline {
 
     environment {
         //     GIT_PATH = 'C:\\Program Files\\Git\\bin'
-        FLUTTER_PATH = 'C:/Users/TBS/fvm/versions/stable/bin'
+        // FLUTTER_PATH = 'C:/Users/TBS/fvm/versions/stable/bin'
+        FLUTTER_PATH = 'C:\\flutter\\bin'
         PATH = "${FLUTTER_PATH};${env.PATH}"
     }
 
@@ -16,7 +17,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'fvm flutter --version'
+                bat 'flutter --version'
             }
         }
 
