@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PATH = 'C:\\Windows\\System32;C:\\Users\\TBS\\fvm\\default\\bin'
+        PATH = 'C:\\Windows\\System32'
     }
 
     stages {
@@ -15,7 +15,7 @@ pipeline {
         stage('Fetch') {
             steps {
                 dir('app') {
-                    bat label: '', script: 'flutter --version'
+                    bat label: '', script: 'git --version'
                 }
             }
         }
