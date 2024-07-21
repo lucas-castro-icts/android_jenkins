@@ -24,7 +24,7 @@ pipeline {
 
         stage('Build APK') {
             steps {
-                bat 'flutter build apk --release'
+                bat 'flutter --version'
             }
         }
 
