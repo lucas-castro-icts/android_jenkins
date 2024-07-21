@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         //     GIT_PATH = 'C:\\Program Files\\Git\\bin'
-        FLUTTER_PATH = 'C:\\Users\\TBS\\fvm\\versions\\3.10.1\\bin'
+        FLUTTER_PATH = 'C:\\Users\\TBS\\fvm\\versions\\stable\\bin'
         PATH = "${FLUTTER_PATH};${env.PATH}"
     }
 
