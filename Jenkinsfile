@@ -5,7 +5,7 @@ pipeline {
         GIT_PATH = 'C:\\Program Files\\Git\\bin'
         FLUTTER_PATH = 'C:\\ProgramData\\chocolatey\\bin;C:\\Users\\TBS\fvm\\default\\bin\\flutter'
         SYSTEM_PATH = 'C:\\Windows\\System32'
-        PATH = "${GIT_PATH};${FLUTTER_PATH};${SYSTEM_PATH};${env.PATH}"
+        PATH = "${SYSTEM_PATH};${GIT_PATH};${FLUTTER_PATH};${env.PATH}"
     }
 
     stages {
@@ -17,19 +17,14 @@ pipeline {
 
         stage('Fetch') {
             steps {
-                // withEnv(["PATH=${env.PATH}"]) {
-                //     dir('app') {
-                //         bat '''
-                //             git --version
-                //             fvm flutter
-                //         '''
-                //     }
-                // }
-                bat '''
-                        echo $PATH  # This will print the current PATH within the script
-                        git --version
-                        fvm flutter
-                    '''
+                withEnv(["PATH=${env.PATH}"]) {
+                    dir('app') {
+                        bat '''
+                            git --version
+                            fvm flutter
+                        '''
+                    }
+                }
             }
         }
     }
