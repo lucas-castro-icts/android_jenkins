@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         SYSTEM_PATH = 'C:\\Windows\\System32'
-        FLUTTER_PATH = 'C:/flutter/bin/flutter'
+        FLUTTER_PATH = 'C:\\flutter\\bin'
         PATH = "${FLUTTER_PATH};;${SYSTEM_PATH};${env.PATH}"
     }
 
