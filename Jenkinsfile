@@ -6,7 +6,7 @@ pipeline {
         ///C:\Users\TBS\fvm\default\bin
         GIT_PATH = 'C:\\Program Files\\Git\\bin'
         SYSTEM_PATH = 'C:\\Windows\\System32>'
-        FLUTTER_PATH = 'C:\\flutter'
+        FLUTTER_PATH = 'C:\\flutter\\bin'
         PATH = "${FLUTTER_PATH};${GIT_PATH};${SYSTEM_PATH};${env.PATH}"
     }
 
