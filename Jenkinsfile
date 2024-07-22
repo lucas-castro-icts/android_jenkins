@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        FLUTTER_PATH = 'C:/flutter'
-        PATH = "${FLUTTER_PATH};${SYSTEM_PATH};${env.PATH}"
+        FLUTTER_PATH = 'C:\\flutter'
+        PATH = "${FLUTTER_PATH};${env.PATH}"
     }
 
     stages {
