@@ -16,14 +16,14 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                withEnv(["PATH=${env.PATH}"]) {
-                    dir('app') {
+                // withEnv(["PATH=${env.PATH}"]) {
+                //     dir('app') {
                         bat '''
                             git --version
                             flutter
                         '''
-                    }
-                }
+                //     }
+                // }
             }
         }
     }
