@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    environment {
+        SYSTEM_PATH = 'C:\\Windows\\System32'
+        FLUTTER_PATH = 'C:/flutter/bin/flutter'
+        PATH = "${FLUTTER_PATH};;${SYSTEM_PATH};${env.PATH}"
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -10,29 +16,21 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat '''
-                    git --version
-                    flutter
-                '''
+                withEnv(["PATH=${env.PATH}"]) {
+                    dir('app') {
+                        bat '''
+                            git --version
+                            flutter
+                        '''
+                    }
+                }
             }
         }
     }
-
-        // stage('Build APK') {
-        //     steps {
-        //         bat 'flutter --version'
-        //     }
-        // }
-
-// stage('Archive APK') {
-//     steps {
-//         archiveArtifacts artifacts: 'build/app/outputs/flutter-apk/app-release.apk', allowEmptyArchive: true
-//     }
-// }
-}
 
 // post {
 //     always {
 //         cleanWs()
 //     }
 // }
+}
