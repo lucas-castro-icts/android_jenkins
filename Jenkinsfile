@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         FLUTTER_PATH = 'C:\\flutter'
-        PATH = "${FLUTTER_PATH};${env.PATH}"
+        PATH = "${FLUTTER_PATH};C:\\flutter\\.git;${env.PATH}"
     }
 
     stages {
