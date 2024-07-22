@@ -16,7 +16,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo "${env.PATH}"
-                bat 'git --version flutter --version'
+                bat 'flutter --version'
             }
         }
     }
