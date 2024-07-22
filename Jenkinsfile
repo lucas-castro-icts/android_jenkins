@@ -6,7 +6,7 @@ pipeline {
         ///C:\Users\TBS\fvm\default\bin
         GIT_PATH = 'C:\\Program Files\\Git\\bin'
         SYSTEM_PATH = 'C:\\Windows\\System32>'
-        FLUTTER_PATH = 'C:\\tools\\dart-sdk\\bin'
+        FLUTTER_PATH = 'C:/flutter/bin/flutter'
         PATH = "${FLUTTER_PATH};${GIT_PATH};${SYSTEM_PATH};${env.PATH}"
     }
 
@@ -19,14 +19,14 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                // withEnv(["PATH=${env.PATH}"]) {
-                //     dir('app') {
+                withEnv(["PATH=${env.PATH}"]) {
+                    dir('app') {
                         bat '''
                             git --version
                             flutter
                         '''
-                    // }
-                // }
+                    }
+                }
             }
         }
 
