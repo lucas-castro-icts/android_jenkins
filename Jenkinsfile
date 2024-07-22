@@ -22,6 +22,7 @@ pipeline {
                             git --version
                             flutter
                         '''
+                        echo "${env.PATH}"
                 //     }
                 // }
             }
