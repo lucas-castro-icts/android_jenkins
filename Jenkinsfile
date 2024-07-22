@@ -2,11 +2,9 @@ pipeline {
     agent any
 
     environment {
-        // FLUTTER_PATH = 'C:/Users/TBS/fvm/versions/stable/bin'
-        ///C:\Users\TBS\fvm\default\bin
-        GIT_PATH = 'C:\\Program Files\\Git\\bin\\git.exe;C:\\Program Files\\Git\\cmd;C:\\Windows\\System32'
-        FLUTTER_PATH = 'C:\\flutter\\bin'
-        PATH = ";${GIT_PATH};${FLUTTER_PATH};${SYSTEM_PATH};${env.PATH}"
+        // GIT_PATH = 'C:\\Program Files\\Git\\bin\\git.exe;C:\\Program Files\\Git\\cmd;C:\\Windows\\System32'
+        // FLUTTER_PATH = 'C:\\flutter\\bin'
+        // PATH = ";${GIT_PATH};${FLUTTER_PATH};${SYSTEM_PATH};${env.PATH}"
     }
 
     stages {
