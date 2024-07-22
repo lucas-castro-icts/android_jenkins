@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         SYSTEM_PATH = 'C:\\Windows\\System32'
-        FLUTTER_PATH = 'C:\\flutter\\bin'
+        FLUTTER_PATH = '/flutter/bin'
         PATH = "${FLUTTER_PATH};${SYSTEM_PATH};${env.PATH}"
     }
 
@@ -20,7 +20,7 @@ pipeline {
                     dir('app') {
                         bat '''
                             git --version
-                            echo ${PATH}
+                            flutter
                         '''
                     }
                 }
