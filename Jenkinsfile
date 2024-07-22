@@ -20,7 +20,7 @@ pipeline {
                     dir('app') {
                         bat '''
                             git --version
-                            ${env.PATH}
+                            echo ${PATH}
                         '''
                     }
                 }
