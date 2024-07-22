@@ -16,21 +16,19 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 withEnv(["PATH=${env.PATH}"]) {
-                    dir('app') {
                         echo "${env.PATH}"
                         bat '''
                             git --version
                             flutter --version
                         '''
-                    }
                 }
             }
         }
     }
 
-post {
-    always {
-        cleanWs()
+    post {
+        always {
+            cleanWs()
+        }
     }
-}
 }
