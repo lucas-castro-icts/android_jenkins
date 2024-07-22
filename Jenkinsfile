@@ -15,7 +15,6 @@ pipeline {
                     flutter
                 '''
             }
-
         }
     }
 
@@ -37,4 +36,4 @@ pipeline {
 //         cleanWs()
 //     }
 // }
-}
+
