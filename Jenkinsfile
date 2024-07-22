@@ -3,7 +3,8 @@ pipeline {
 
     environment {
         FLUTTER_PATH = "C:\\Users\\TBS\\flutter\\bin"
-        PATH = "${FLUTTER_PATH};${env.PATH}"
+        DART_SDK = "C:\\tools\\dart-sdk\\bin"
+        PATH = "${FLUTTER_PATH};${DART_SDK};${env.PATH}"
     }
 
     stages {
