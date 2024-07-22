@@ -1,11 +1,11 @@
 pipeline {
     agent any
 
-    environment {
+    // environment {
         // GIT_PATH = 'C:\\Program Files\\Git\\bin\\git.exe;C:\\Program Files\\Git\\cmd;C:\\Windows\\System32'
         // FLUTTER_PATH = 'C:\\flutter\\bin'
         // PATH = ";${GIT_PATH};${FLUTTER_PATH};${SYSTEM_PATH};${env.PATH}"
-    }
+    // }
 
     stages {
         stage('Checkout') {
