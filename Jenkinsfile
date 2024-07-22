@@ -2,9 +2,11 @@ pipeline {
     agent any
 
     environment {
-        SYSTEM_PATH = 'C:\\Windows\\System32'
-        FLUTTER_PATH = '/flutter/bin'
-        PATH = "${FLUTTER_PATH};${SYSTEM_PATH};${env.PATH}"
+        // FLUTTER_PATH = 'C:\\Windows\\System32'
+        // PATH = "${FLUTTER_PATH};${env.PATH}"
+        FLUTTER_VERSION = '3.19.2' 
+        FLUTTER_HOME = "${env.WORKSPACE}/flutter"
+        PATH = "${FLUTTER_HOME}/bin:${env.PATH}"
     }
 
     stages {
@@ -18,14 +20,20 @@ pipeline {
             steps {
                 // withEnv(["PATH=${env.PATH}"]) {
                 //     dir('app') {
-                        echo "${env.PATH}"
-                        bat '''
-                            git --version
-                            flutter
-                        '''
-                    
+                //         echo "${env.PATH}"
+                //         bat '''
+                //             git --version
+                //             flutter
+                //         '''
                 //     }
                 // }
+                bat '''
+                    if [ ! -d "${FLUTTER_HOME}" ]; then
+                        curl -o flutter.tar.xz https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${FLUTTER_VERSION}-stable.tar.xz
+                        tar xf flutter.tar.xz
+                        mv flutter ${FLUTTER_HOME}
+                    fi
+                    '''
             }
         }
     }
