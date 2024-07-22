@@ -20,7 +20,7 @@ pipeline {
                         echo "${env.PATH}"
                         bat '''
                             git --version
-                            flutter
+                            flutter --version
                         '''
                     }
                 }
