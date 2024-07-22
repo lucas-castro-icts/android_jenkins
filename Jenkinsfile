@@ -18,11 +18,12 @@ pipeline {
             steps {
                 // withEnv(["PATH=${env.PATH}"]) {
                 //     dir('app') {
+                        echo "${env.PATH}"
                         bat '''
                             git --version
                             flutter
                         '''
-                        echo "${env.PATH}"
+                    
                 //     }
                 // }
             }
